@@ -1,0 +1,26 @@
+{
+  "name": "title-search-mern-project",
+  "version": "1.0.0",
+  "description": "Project for demonstrating proficency with the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KendrickIW/title-search-mern-stack.git"
+  },
+  "keywords": [
+    "MERN",
+    "mongojs",
+    "reactjs",
+    "nodejs",
+    "express"
+  ],
+  "author": "Kendrick Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KendrickIW/title-search-mern-stack/issues"
+  },
+  "homepage": "https://github.com/KendrickIW/title-search-mern-stack#readme"
+}
