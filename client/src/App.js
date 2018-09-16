@@ -4,9 +4,6 @@ import logo from './logo.svg';
 import './App.scss';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
 
   componentWillMount() {
     this.setState({titles: []});
@@ -15,10 +12,20 @@ class App extends Component {
   handleChange = (event) => {
     this.setState({name: event.target.value})
   }
+
+  handleSearchButtonClick = (event) => {
+    document.querySelector('body').classList.add('search-active');
+  }
+
+  handleCloseButtonClick = (event) => {
+    document.querySelector('body').classList.remove('search-active'); 
+  }
   
   searchSubmitted(event) {
     event.preventDefault();
     axios.get(`/api/titles/${this.state.name}`).then((response) => this.setState({titles: response.data}));
+    document.querySelector('body').classList.remove('search-active');
+    event.target.reset();
   }
 
   render() {
@@ -41,25 +48,28 @@ class App extends Component {
         </p> */}
 <div className='container container-dark p-y-md'>
   <div className='header-content'>
-    <h1>Material Search Animation</h1>
-    <h2>Usign CSS Transitions</h2>
+    <h1>Title Search</h1>
   </div>
 </div>
 
 
 
 <div className='container p-y-md'>
-  <div className='control'>
+  <div className='control' onClick={this.handleSearchButtonClick}>
     <div className='btn-material'></div>
     <i className='material-icons icon-material-search'>search</i>
   </div>
 
-  <div id='h2'>by <a href="https://codepen.io/hone">Luca Dimola</a></div>
+  <ul>
+            {titleList}
+          </ul>
 </div>
 
-<i className='icon-close material-icons'>close</i>
+<i className='icon-close material-icons' onClick={this.handleCloseButtonClick}>close</i>
 <div className='search-input'>
-  <input className='input-search' placeholder='Start Typing' type='text' />
+  <form onSubmit={(event) => this.searchSubmitted(event)}>
+  <input className='input-search' placeholder='Start Typing' type='text' onChange={this.handleChange} />
+  </form>
 </div>
       </div>
     );
