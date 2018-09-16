@@ -1,2 +1,3 @@
 --recursive ./test/**/*.test.{ts,tsx}
 --require ts-node/register
+--require chai/register-should
