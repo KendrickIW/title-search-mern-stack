@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(express.static("client/build"));
 app.use(router);
 
 const port = process.env.PORT || 8080;

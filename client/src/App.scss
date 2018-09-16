@@ -29,9 +29,11 @@ body {
       cursor: default;
       .btn-material {
         transform: scale(70);
+        z-index: 1;
       }
       .icon-material-search {
         opacity: 0;
+        z-index: 0;
       }
     }
   }
@@ -41,6 +43,7 @@ body {
 /* Close Icon */
 
 .icon-close {
+  z-index: 1;
   position: fixed;
   top: 30px;
   right: 30px;
@@ -58,6 +61,7 @@ body {
 /* Search Input */
 
 .search-input {
+  z-index: 1;
   height: 80px;
   position: absolute;
   top: 50%;
@@ -151,4 +155,33 @@ body {
 h1,
 h2 {
   font-weight: 300;
+}
+
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.results-card {
+  width: 375px;
+  margin: 20px;
+
+  p {
+    height: 60px;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+  }
+}
+
+.results-image {
+  padding-top: 56.25%;
+}
+
+.results-modal {
+  position: absolute;
+  width: 500px;
+  background-color: white;
+  top: 35%;
+  left: 35%;
+  padding: 20px;
 }
