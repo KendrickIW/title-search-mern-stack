@@ -10,6 +10,6 @@ describe('routes', () => {
   });
 
   it('has a get \'/\' route', () => {
-    routes.should.have.route("get", "/");
+    routes.should.have.route("/", "get");
   });
 });
