@@ -8,7 +8,7 @@
     "start": "ts-node server.ts",
     "start:dev": "concurrently \"ts-node server.ts\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && yarn install",
+    "postinstall": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
