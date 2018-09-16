@@ -7,8 +7,9 @@ interface Controller {
 
 class TitleController implements Controller {
   findAll(req: Request, res: Response) {
-    Title.find(req.params).then((titles) => {
-      res.json(titles);
+    Title.find({ TitleName: new RegExp(req.params.TitleName, 'i')})
+      .then((titles) => {
+        res.json(titles);
     });
   }
 }
