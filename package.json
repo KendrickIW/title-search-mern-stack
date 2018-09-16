@@ -41,7 +41,8 @@
     "if-env": "^1.0.4",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "yarn": "^1.9.4"
   },
   "dependencies": {
     "express": "^4.16.3",
