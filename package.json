@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "ts-node server.ts",
+    "start": "ts-node server.ts",
     "start:dev": "concurrently \"ts-node server.ts\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && yarn install",
