@@ -1,0 +1,9 @@
+.title-card {
+    width: 300px;
+
+    .title-content {
+        height: 100px;
+        overflow-y: scroll;
+        text-overflow: ellipsis;
+    }
+}
