@@ -25,6 +25,10 @@ class TitleCard extends React.Component {
             .then(data => data.Poster && this.setState({image: data.Poster}));
     }
 
+    handleOpen = () => {
+        this.props.expandTitle(this.props.title)
+    }
+
     render() {
         const { title } = this.props;
         return(
@@ -47,7 +51,7 @@ class TitleCard extends React.Component {
           </Typography>
         </CardContent>
         <CardActions>
-<Button size="small" color="primary" data-index={title._id} onClick={() => this.handleOpen(title)}>
+<Button size="small" color="primary" data-index={title._id} onClick={() => this.handleOpen()}>
   Learn More
 </Button>
 </CardActions>

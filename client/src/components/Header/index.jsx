@@ -8,7 +8,9 @@ import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import LocalMovies from '@material-ui/icons/LocalMoviesOutlined';
 import SearchIcon from '@material-ui/icons/Search';
+import './Header.scss';
 
 const styles = theme => ({
   root: {
@@ -70,20 +72,28 @@ const styles = theme => ({
   },
 });
 
-function SearchAppBar(props) {
-  const { classes } = props;
+class SearchAppBar extends React.Component {
+    state = {
+        loading: true
+    }
+
+    componentDidMount() {
+        setTimeout(() => this.setState({ loading: false }), 1000);
+    }
+    render () {
+  const { classes } = this.props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={`title-search-header ${ this.state.loading ? "loading" : ""}`}>
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            <MenuIcon />
+            <LocalMovies className="site-icon loading" />
           </IconButton>
           <Typography className={classes.title} variant="title" color="inherit" noWrap>
-            Material-UI
+            Title Search
           </Typography>
           <div className={classes.grow} />
-          <div className={classes.search}>
+          <div className={`${classes.search} input-search-bar`}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -100,6 +110,7 @@ function SearchAppBar(props) {
       </AppBar>
     </div>
   );
+}
 }
 
 SearchAppBar.propTypes = {

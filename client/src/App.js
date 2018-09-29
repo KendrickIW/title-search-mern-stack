@@ -12,6 +12,7 @@ import logo from './logo.svg';
 import TitleCard from './components/TitleCard';
 import './App.scss';
 import Header from './components/Header';
+import { Paper } from '@material-ui/core';
 
 class App extends Component {
 
@@ -52,21 +53,24 @@ class App extends Component {
     event.target.reset();
   }
 
+  expandTitle = (title) => {
+    console.log("Expand:", title.TitleName);
+  }
+
   render() {
     const { titles } = this.state;
 
-    const titleList = titles.map((title, index) => {
-      return (<Grid item><TitleCard title={title} key={title._id} /></Grid>);
+    const titleList = titles.map((title) => {
+      return (<Grid item><TitleCard title={title} key={title._id} expandTitle={this.expandTitle}/></Grid>);
     });
 
     return (
       <Fragment>
-        
-        <Grid container spacing={24} justify="center">
+        <Grid container justify="center">
         <Grid item xs={12}>
           <Header />
         </Grid>
-          <Grid item md={10} xs={12}>
+          <Grid item md={10} xs={12} className="main">
             <Grid container spacing={16} justify="center">
               {titleList}
             </Grid>

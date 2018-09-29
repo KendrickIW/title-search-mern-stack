@@ -1,0 +1,36 @@
+.site-icon, .title-search-header, .input-search-bar {
+    -webkit-transition: all 2s ease-out;
+    -moz-transition: all 2s ease-out;
+    -o-transition: all 2s ease-out;
+    transition: all 2s ease-out;
+}
+
+.input-search-bar {
+    opacity: 1;
+}
+
+.title-search-header {
+    &.loading {
+        position: absolute;
+        height: 100%;
+
+        .site-icon {
+                position: fixed;
+                top: 40%;
+                left: 40%;
+                font-size: 200px;
+                -webkit-animation:spin 4s linear infinite;
+        -moz-animation:spin 4s linear infinite;
+        animation:spin 4s linear infinite;
+        }
+
+        .input-search-bar {
+            opacity: 0;
+        }
+    }
+    
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+}
+
