@@ -61,13 +61,13 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Header />
+        
         <Grid container spacing={24} justify="center">
-        <Grid item>
-          
+        <Grid item xs={12}>
+          <Header />
         </Grid>
           <Grid item md={10} xs={12}>
-            <Grid container spacing={16} justify="space-around">
+            <Grid container spacing={16} justify="center">
               {titleList}
             </Grid>
           </Grid>
