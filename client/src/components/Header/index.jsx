@@ -74,11 +74,21 @@ const styles = theme => ({
 
 class SearchAppBar extends React.Component {
     state = {
-        loading: true
+        loading: true,
+        searchTitle: ""
     }
 
     componentDidMount() {
         setTimeout(() => this.setState({ loading: false }), 1000);
+    }
+
+    handleSearchChange = (event) => {
+      this.setState({ searchTitle: event.target.value });
+    }
+
+    handleSearchBlur = () => {
+      console.log('blur');
+      this.props.search(this.state.searchTitle);
     }
     render () {
   const { classes } = this.props;
@@ -104,6 +114,9 @@ class SearchAppBar extends React.Component {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              value={this.state.searchTitle}
+              onBlur={this.handleSearchBlur}
+              onChange={this.handleSearchChange}
             />
           </div>
         </Toolbar>

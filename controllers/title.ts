@@ -2,15 +2,17 @@ import Title from '../models/title';
 import { Request, Response } from 'express';
 
 interface Controller {
-  findAll: (req: Request, res: Response) => void;
+  findAll: () => any;
+  findAllBy: (property: string, value: string) => any;
 }
 
 class TitleController implements Controller {
-  findAll(req: Request, res: Response) {
-    Title.find({ TitleName: new RegExp(req.params.TitleName, 'i')})
-      .then((titles) => {
-        res.json(titles);
-    });
+  findAllBy(property: string, value: string) {
+    return Title.find({ [property]: new RegExp(value, 'i')});
+  }
+
+  findAll() {
+    return Title.find();
   }
 }
 

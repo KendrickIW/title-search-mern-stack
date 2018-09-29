@@ -12,7 +12,7 @@ import logo from './logo.svg';
 import TitleCard from './components/TitleCard';
 import './App.scss';
 import Header from './components/Header';
-import { Paper } from '@material-ui/core';
+import { Paper, DialogTitle } from '@material-ui/core';
 
 class App extends Component {
 
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/titles/the`).then((response) => this.setState({ titles: response.data }));
+    this.searchSubmitted("");
   }
 
   handleClose = () => {
@@ -46,11 +46,9 @@ class App extends Component {
     document.querySelector('body').classList.remove('search-active');
   }
 
-  searchSubmitted(event) {
-    event.preventDefault();
-    axios.get(`/api/titles/${this.state.name}`).then((response) => this.setState({ titles: response.data }));
-    document.querySelector('body').classList.remove('search-active');
-    event.target.reset();
+  searchSubmitted = (title) => {
+    const url = (title && title.length > 0) ? `/api/titles/${title}` : `/api/titles`;
+    axios.get(url).then((response) => this.setState({ titles: response.data }));
   }
 
   expandTitle = (title) => {
@@ -68,7 +66,7 @@ class App extends Component {
       <Fragment>
         <Grid container justify="center">
         <Grid item xs={12}>
-          <Header />
+          <Header search={this.searchSubmitted}/>
         </Grid>
           <Grid item md={10} xs={12} className="main">
             <Grid container spacing={16} justify="center">
