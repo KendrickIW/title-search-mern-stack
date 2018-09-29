@@ -50,7 +50,7 @@ class App extends Component {
     const { titles } = this.state;
     
     const titleList = titles.map((title, index) => {
-      return (<Card className="results-card">
+      return (<Card className="results-card" key={title._id}>
                 <CardMedia
                   className="result-image"
                   image="https://thenextdoor.org/wp-content/uploads/2016/11/placeholder-815x458.png"
